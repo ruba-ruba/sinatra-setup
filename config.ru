@@ -1,7 +1,4 @@
-require 'pry'
-require 'require_all'
-require_all 'lib'
-require_all 'controllers'
+require './requires'
 
 run Rack::URLMap.new(
   '/' => HomeController
