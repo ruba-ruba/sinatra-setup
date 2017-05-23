@@ -8,6 +8,7 @@ gem 'warden'
 gem 'sequel'
 gem 'shotgun'
 gem 'require_all'
+gem 'rspec', '3.6'
 
 group :development, :test do
   gem 'pry'

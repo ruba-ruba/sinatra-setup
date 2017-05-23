@@ -13,6 +13,7 @@ ruby 2.4.1
 - authentication: warden
 - orm: sequel
 - database: sqlite
+- testing: RSpec
 - bundler
 
 ##### Development
