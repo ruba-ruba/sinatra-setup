@@ -15,6 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rack/test'
 
+Bundler.require
 require './requires'
 
 ENV['RACK_ENV'] = 'test'
