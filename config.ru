@@ -1,6 +1,4 @@
-Bundler.require
-
-require './requires'
+require File.expand_path('../lib/application', __FILE__)
 
 run Rack::URLMap.new(
   '/' => LoginManager,

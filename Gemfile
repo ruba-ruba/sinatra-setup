@@ -9,6 +9,7 @@ gem 'sequel', '4.46.0'
 gem 'shotgun'
 gem 'require_all'
 gem 'rack-flash3'
+gem 'rake'
 
 group :test do
   gem 'rspec', '3.6'

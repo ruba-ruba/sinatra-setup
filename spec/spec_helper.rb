@@ -15,8 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rack/test'
 
-Bundler.require
-require './requires'
+require File.expand_path('../../lib/application', __FILE__)
 
 ENV['RACK_ENV'] = 'test'
 

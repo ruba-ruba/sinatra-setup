@@ -1,3 +1,4 @@
+Bundler.require
 require 'sinatra/base'
 require 'rack-flash'
 require 'pry'
@@ -25,3 +26,5 @@ class Application < Sinatra::Base
       action: '/login'
   end
 end
+
+require './lib/deps'
