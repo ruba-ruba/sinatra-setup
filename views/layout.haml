@@ -3,8 +3,14 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %meta{:charset => "utf-8"}
+    %title Sinatra::Modular
   %body
     .title
-      %h4 about this app
+      %h4 Sinatra::Modular
+    .user
+      - if warden.authenticated?
+        = "Hello #{warden.user.email}"
+        %br
+        %a{ href: url("#{request.base_url}/logout") } logout
     .content
       = yield

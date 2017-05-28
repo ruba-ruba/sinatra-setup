@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe HomeController do
+RSpec.describe HomeApp do
   def app() described_class end
 
   it 'render /' do

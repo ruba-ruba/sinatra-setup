@@ -1,4 +1,4 @@
-require 'pry'
-require 'require_all'
+require './config/database'
+require './config/warden'
+
 require_all 'lib'
-require_all 'controllers'
