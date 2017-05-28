@@ -1,7 +1,9 @@
 class LoginManager < Application
   before %r{/login|/signup} do
-    # set flash message
-    redirect '/' if warden.authenticated?
+    if warden.authenticated?
+      env['x-rack.flash'][:notice] = 'You already logged in.'
+      redirect '/'
+    end
   end
 
   get '/' do

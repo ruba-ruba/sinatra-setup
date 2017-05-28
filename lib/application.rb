@@ -11,11 +11,9 @@ class Application < Sinatra::Base
   enable :sessions
   set :session_secret, "supersecret"
 
-  def warden
-    env['warden']
-  end
+  FLASH_MESSAGE_TYPES = %i(error success notice)
 
-  use Rack::Flash, accessorize: [:error, :success]
+  use Rack::Flash, accessorize: FLASH_MESSAGE_TYPES
 
   use Warden::Manager do |manager|
     manager.default_strategies :password
@@ -24,6 +22,10 @@ class Application < Sinatra::Base
     manager.scope_defaults :default,
       strategies: [:password],
       action: '/login'
+  end
+
+  def warden
+    env['warden']
   end
 end
 

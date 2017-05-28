@@ -1,0 +1,7 @@
+-# todo: create view helpers
+- FLASH_MESSAGE_TYPES.each do |type|
+  - if flash.has?(type)
+    - flash_class = { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-info" }[type]
+    %div{:class => "alert #{flash_class}"}
+      %button.close{"data-dismiss" => "alert"} ×
+      = flash[type]
