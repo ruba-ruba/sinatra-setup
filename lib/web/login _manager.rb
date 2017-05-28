@@ -27,7 +27,10 @@ class LoginManager < Application
   end
 
   post '/signup/?' do
-    # this has to be done somewhat safer
-    User.create(email: params['email'], password: params['password'])
+    if user = User.create(email: params['email'], password: params['password'])
+      warden.set_user(user)
+      redirect '/'
+    end
+    retirect 'signup'
   end
 end
