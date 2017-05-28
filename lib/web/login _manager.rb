@@ -1,4 +1,9 @@
 class LoginManager < Application
+  before %r{/login|/signup} do
+    # set flash message
+    redirect '/' if warden.authenticated?
+  end
+
   get '/' do
     redirect '/home'
   end
