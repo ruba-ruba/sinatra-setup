@@ -1,3 +1,3 @@
-DEVELOPMENT_DB = 'development.db'.freeze
+Dir["./config/#{ENV['RACK_ENV']}/*.rb"].each { |file| require file }
 
-Sequel.connect("sqlite://db/#{DEVELOPMENT_DB}")
+Sequel.connect("sqlite://db/#{DB}")

@@ -14,13 +14,17 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rack/test'
-
-require File.expand_path('../../lib/application', __FILE__)
+require 'factory_girl'
+require 'pry'
+require 'database_cleaner'
 
 ENV['RACK_ENV'] = 'test'
 
+require File.expand_path('../../lib/application', __FILE__)
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.include FactoryGirl::Syntax::Methods
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -30,4 +34,14 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before(:suite) do
+    FactoryGirl.find_definitions
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  config.after(:suite) do
+    DatabaseCleaner.clean
+  end
 end

@@ -1,9 +1,10 @@
+require 'pry'
 require File.expand_path('../lib/application', __FILE__)
 
 namespace :db do
   task :setup do
     desc 'create database & scheema'
-    db = SQLite3::Database.new "db/#{DEVELOPMENT_DB}"
+    db = SQLite3::Database.new "db/#{DB}"
 
     db.execute <<-SQL
       CREATE TABLE IF NOT EXISTS users (
@@ -16,7 +17,7 @@ namespace :db do
 
   task :drop do
     desc 'drop development database'
-    File.delete("db/#{DEVELOPMENT_DB}") if File.exist?("db/#{DEVELOPMENT_DB}")
+    File.delete("db/#{DB}") if File.exist?("db/#{DB}")
   end
 
   task :reset do
@@ -29,6 +30,13 @@ namespace :db do
     desc 'populate development database'
     if User.find(email: 'user@com').nil?
       User.create(email: 'user@com', password: 'pass')
+    end
+  end
+
+  namespace :test do
+    task :setup do
+      desc 'create test database & schema'
+      `rake db:setup RACK_ENV=test`
     end
   end
 end

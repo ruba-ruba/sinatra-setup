@@ -13,7 +13,9 @@ ruby 2.4.1
 - authentication: warden
 - orm: Sequel
 - database: sqlite
-- testing: RSpec
+- testing:
+  - RSpec
+  - FactoryGirl
 - styling: Bootstrap
 - bundler
 

@@ -3,6 +3,8 @@ require 'sinatra/base'
 require 'rack-flash'
 require 'pry'
 
+ENV['RACK_ENV'] ||= 'development'
+
 class Application < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
 
