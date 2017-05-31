@@ -1,4 +1,4 @@
-Warden::Manager.before_failure do |env,opts|
+Warden::Manager.before_failure do |env, opts|
   # Sinatra is very sensitive to the request method
   # since authentication could fail on any type of method, we need
   # to set it for the failure app so it is routed to the correct block
@@ -12,8 +12,7 @@ Warden::Strategies.add(:password) do
 
   def authenticate!
     u = User.authenticate(params['email'], params['password'])
-    result = u.nil? ? fail!('Could not log in') : success!(u)
-    puts "auth --- #{result}"
+    u.nil? ? fail!('Could not log in') : success!(u)
   end
 end
 

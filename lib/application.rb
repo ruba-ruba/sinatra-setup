@@ -9,9 +9,9 @@ class Application < Sinatra::Base
   set :logging, true
 
   enable :sessions
-  set :session_secret, "supersecret"
+  set :session_secret, 'supersecret'
 
-  FLASH_MESSAGE_TYPES = %i(error success notice)
+  FLASH_MESSAGE_TYPES = %i[error success notice].freeze
 
   use Rack::Flash, accessorize: FLASH_MESSAGE_TYPES
 
