@@ -13,9 +13,11 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'pry'
+
+require 'support/coverage'
 require 'rack/test'
 require 'factory_girl'
-require 'pry'
 require 'database_cleaner'
 
 ENV['RACK_ENV'] = 'test'
@@ -23,6 +25,7 @@ ENV['RACK_ENV'] = 'test'
 require File.expand_path('../../lib/application', __FILE__)
 
 RSpec.configure do |config|
+
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
 

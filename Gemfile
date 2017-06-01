@@ -13,6 +13,7 @@ gem 'sqlite3', '1.3.13'
 gem 'warden'
 
 group :test do
+  gem 'simplecov', require: false
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'rack-test', require: 'rack/test'

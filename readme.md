@@ -1,4 +1,3 @@
-
 ##### Sinatra boilerplate
 
 The complete sinatra (*mvc) boilerplate ready for building simple applications
@@ -9,10 +8,10 @@ ruby 2.4.1
 
 ##### Components
 
-- views: haml
-- authentication: warden
+- views: Haml
+- authentication: Warden
 - orm: Sequel
-- database: sqlite
+- database: SQLite
 - testing:
   - RSpec
   - FactoryGirl

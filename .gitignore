@@ -5,8 +5,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/*.db
-development.db
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+
+# simplecov
+/coverage
