@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LoginManager < Application
   before %r{/login|/signup} do
     if warden.authenticated?

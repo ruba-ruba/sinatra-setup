@@ -8,18 +8,26 @@ ruby 2.4.1
 
 ##### Components
 
-- views: Haml
 - authentication: Warden
 - orm: Sequel
 - database: SQLite
 - testing:
   - RSpec
   - FactoryGirl
+- server: puma
+- views: Haml
 - styling: Bootstrap
 - bundler
 
-##### Development
+##### Startup
 
-shotgun config.ru
+- shotgun --server=puma --port=9292 config.ru
+- puma/rackup config.ru
+
+##### TODO
+
+- add background jobs / queues
+- add search engine
+- add caching
 
 ##### License

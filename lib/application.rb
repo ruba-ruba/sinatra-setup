@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Bundler.require
 require 'sinatra/base'
 require 'rack-flash'
@@ -21,9 +23,11 @@ class Application < Sinatra::Base
     manager.default_strategies :password
     manager.failure_app = LoginManager
 
-    manager.scope_defaults :default,
+    manager.scope_defaults(
+      :default,
       strategies: [:password],
       action: '/login'
+    )
   end
 
   def warden
