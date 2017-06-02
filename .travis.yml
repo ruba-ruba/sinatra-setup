@@ -1,4 +1,6 @@
 language: ruby
 rvm:
  - 2.4.1
-install: ./travis.sh
+cache: bundler
+script:
+  - bundle exec rspec

@@ -1,1 +1,1 @@
-DB = 'development.db'.freeze
+DB = Sequel.connect("sqlite://db/development.db")

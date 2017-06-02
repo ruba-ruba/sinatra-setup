@@ -1,1 +1,3 @@
-DB = 'test.db'.freeze
+DB = Sequel.sqlite
+
+DB.execute File.read('db/schema.sql')
