@@ -23,8 +23,12 @@ ruby 2.4.1
 
 ##### Startup
 
-- shotgun --server=puma --port=9292 config.ru
-- puma/rackup config.ru
+- server:
+  - shotgun --server=puma --port=9292 config.ru
+  - puma/rackup config.ru
+- tests:
+  - rspec
+  - COVERAGE=true rspec
 
 ##### TODO
 
