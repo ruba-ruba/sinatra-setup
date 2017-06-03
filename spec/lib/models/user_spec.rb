@@ -18,4 +18,20 @@ RSpec.describe User do
       expect(described_class.authenticate(user.email, 'upass')).to be_truthy
     end
   end
+
+  describe 'validations' do
+    let(:user) { build(:user) }
+
+    it 'requires email' do
+      user.email = nil
+      expect(user).not_to be_valid
+      expect(user.errors[:email]).to eq ['is not present']
+    end
+
+    it 'requires email' do
+      user.password = nil
+      expect(user).not_to be_valid
+      expect(user.errors[:password]).to eq ['is not present']
+    end
+  end
 end

@@ -1,1 +1,1 @@
-DB = Sequel.connect("sqlite://db/development.db")
+DB = Sequel.connect('sqlite://db/development.db')

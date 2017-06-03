@@ -11,13 +11,13 @@ namespace :db do
 
   task :drop do
     desc 'drop development database'
-    File.delete("db/development.db") if File.exist?("db/development.db")
+    File.delete('db/development.db') if File.exist?('db/development.db')
   end
 
   task :create do
     desc 'create development database'
-    unless File.exist?("db/development.db")
-      File.open("db/development.db", "w") {}
+    unless File.exist?('db/development.db')
+      File.open('db/development.db', 'w') {}
     end
   end
 

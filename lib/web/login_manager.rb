@@ -3,7 +3,7 @@
 class LoginManager < Application
   before %r{/login|/signup} do
     if warden.authenticated?
-      env['x-rack.flash'][:notice] = 'You already logged in.'
+      env['x-rack.flash'][:notice] = 'already logged in.'
       redirect '/'
     end
   end
@@ -31,10 +31,13 @@ class LoginManager < Application
   end
 
   post '/signup/?' do
-    if user = User.create(email: params['email'], password: params['password'])
+    user = SignupProcessor.process(params)
+    if user.new?
+      env['x-rack.flash'][:error] = 'parameters are not valid'
+      haml :'auth/signup'
+    else
       warden.set_user(user)
       redirect '/'
     end
-    retirect 'signup'
   end
 end

@@ -68,8 +68,26 @@ RSpec.describe LoginManager do
         expect(last_response.status).to eq 302
       end
     end
-  end
 
+    context 'POST /signup' do
+      it 'render signup' do
+        post '/signup'
+        expect(last_response.status).to eq 200
+        expect(last_response.body).to match(/parameters are not valid/)
+      end
+
+      context 'with valid params' do
+        let(:params) do
+          { 'email' => 'email@com', 'password' => 'pass', 'password_confirmation' => 'pass' }
+        end
+
+        it 'create && login user and redirect to /' do
+          post '/signup', params
+          expect(last_response.status).to eq 302
+        end
+      end
+    end
+  end
 
   describe '/' do
     it 'redirect to home' do
