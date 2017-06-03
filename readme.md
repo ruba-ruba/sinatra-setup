@@ -1,9 +1,10 @@
 [![Code Climate](https://codeclimate.com/github/ruba-ruba/sinatra-setup/badges/gpa.svg)](https://codeclimate.com/github/ruba-ruba/sinatra-setup)
+[![Test Coverage](https://codeclimate.com/github/ruba-ruba/sinatra-setup/badges/coverage.svg)](https://codeclimate.com/github/ruba-ruba/sinatra-setup/coverage)
 [![Build Status](https://travis-ci.org/ruba-ruba/sinatra-setup.svg?branch=master)](https://travis-ci.org/ruba-ruba/sinatra-setup)
 
-##### Sinatra boilerplate
+#### Sinatra Setup
 
-The complete sinatra (*mvc) boilerplate ready for building simple applications
+The complete sinatra (*mvc) boilerplate ready for building simple applications.
 
 ##### Requirements
 
@@ -39,6 +40,5 @@ ruby 2.4.1
 - add caching
 
 ##### License
-
 
 [MIT](https://opensource.org/licenses/MIT)
