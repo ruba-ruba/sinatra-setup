@@ -12,32 +12,32 @@ ruby 2.4.1
 
 ##### Components
 
-- authentication: Warden
-- orm: Sequel
-- database: SQLite
-- testing:
-  - RSpec
-  - FactoryGirl
-- server: puma
-- views: Haml
-- styling: Bootstrap
-- bundler
+  - authentication: [Warden](https://github.com/hassox/warden)
+  - orm: [Sequel](http://sequel.jeremyevans.net/)
+  - database: [SQLite](https://www.sqlite.org/)
+  - testing: [RSpec](http://rspec.info/), [FactoryGirl](https://github.com/thoughtbot/factory_girl)
+  - server: [puma](http://puma.io/)
+  - views: [Haml](http://haml.info/)
+  - styling: [Bootstrap](http://getbootstrap.com/)
+  - [bundler](http://bundler.io/)
 
 ##### Startup
 
 - server:
-  - shotgun --server=puma --port=9292 config.ru
-  - puma/rackup config.ru
+  - shotgun config.ru --server=puma --port=9292
+  - puma config.ru
 - tests:
   - rspec
   - COVERAGE=true rspec
 
 ##### TODO
 
-- improve coverage
-- add background jobs / queues
-- add search engine
-- add caching
+- add background (jobs/queus)
+- add search engine (elastic/*)
+- add caching (redis/memcached)
+- more robust authentication (+OAuth)
+- add migrations support & remove dummy schema
+- add api namespace
 
 ##### License
 
