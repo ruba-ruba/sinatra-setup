@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/ruba-ruba/sinatra-setup/badges/gpa.svg)](https://codeclimate.com/github/ruba-ruba/sinatra-setup)
 [![Build Status](https://travis-ci.org/ruba-ruba/sinatra-setup.svg?branch=master)](https://travis-ci.org/ruba-ruba/sinatra-setup)
 
 ##### Sinatra boilerplate
