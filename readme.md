@@ -12,14 +12,16 @@ ruby 2.4.1
 
 ##### Components
 
-  - authentication: [Warden](https://github.com/hassox/warden)
-  - orm: [Sequel](http://sequel.jeremyevans.net/)
-  - database: [SQLite](https://www.sqlite.org/)
-  - testing: [RSpec](http://rspec.info/), [FactoryGirl](https://github.com/thoughtbot/factory_girl)
-  - server: [puma](http://puma.io/)
-  - views: [Haml](http://haml.info/)
-  - styling: [Bootstrap](http://getbootstrap.com/)
-  - [bundler](http://bundler.io/)
+  | Component      | Source |
+  | -------------- |--------|
+  | authentication | [Warden](https://github.com/hassox/warden) |
+  | orm            | [Sequel](http://sequel.jeremyevans.net/)   |
+  | database       | [SQLite](https://www.sqlite.org/)          |
+  | testing        | [RSpec](http://rspec.info/), [FactoryGirl](https://github.com/thoughtbot/factory_girl) |
+  | server         | [puma](http://puma.io/)                    |
+  | views          | [Haml](http://haml.info/)                  |
+  | styling        | [Bootstrap](http://getbootstrap.com/)      |
+  |                | [bundler](http://bundler.io/)              |
 
 ##### Startup
 
