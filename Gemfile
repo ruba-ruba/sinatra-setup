@@ -12,6 +12,7 @@ gem 'shotgun'
 gem 'sinatra', github: 'sinatra/sinatra'
 gem 'sqlite3', '1.3.13'
 gem 'warden'
+gem 'interactor', '~> 3.0'
 
 group :test do
   gem "codeclimate-test-reporter", "~> 1.0.0"

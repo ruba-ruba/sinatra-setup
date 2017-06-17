@@ -11,14 +11,6 @@ RSpec.describe User do
     end
   end
 
-  describe '.authenticate' do
-    let!(:user) { create(:user, email: 'uemail', password: 'upass') }
-
-    it 'works when params are correct' do
-      expect(described_class.authenticate(user.email, 'upass')).to be_truthy
-    end
-  end
-
   describe 'validations' do
     let(:user) { build(:user) }
 

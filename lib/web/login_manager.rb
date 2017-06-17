@@ -18,6 +18,7 @@ class LoginManager < Application
 
   post '/login/?' do
     warden.authenticate!
+    env['x-rack.flash'][:notice] = "Hello, #{warden.user.email}"
     redirect '/'
   end
 
