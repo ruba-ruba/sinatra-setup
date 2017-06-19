@@ -7,6 +7,7 @@ require 'pry'
 
 ENV['RACK_ENV'] ||= 'development'
 
+# main app class. Defines all settings & configuration.
 class Application < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
 
