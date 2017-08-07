@@ -8,7 +8,7 @@ The complete sinatra (*mvc) boilerplate ready for building simple applications.
 
 ##### Requirements
 
-ruby 2.4.1
+ruby ~> 2.3
 
 ##### Components
 
@@ -21,25 +21,26 @@ ruby 2.4.1
   | server         | [puma](http://puma.io/)                    |
   | views          | [Haml](http://haml.info/)                  |
   | styling        | [Bootstrap](http://getbootstrap.com/)      |
+  | queueing       | [RabbitMQ](https://www.rabbitmq.com/)      |
   |                | [bundler](http://bundler.io/)              |
 
 ##### Startup
 
 - server:
-  - shotgun config.ru --server=puma --port=9292
-  - puma config.ru
+  - foreman start
+  - foreman start -f Procfile-dev
 - tests:
   - rspec
   - COVERAGE=true rspec
 
 ##### TODO
 
-- add background (jobs/queus)
 - add search engine (elastic/*)
 - add caching (redis/memcached)
 - more robust authentication (+OAuth)
 - add migrations support & remove dummy schema
 - add api namespace
+- start app in a docker container
 
 ##### License
 
