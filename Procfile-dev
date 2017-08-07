@@ -1,0 +1,5 @@
+# queue server
+rabbitmq: rabbitmq-server
+
+# web server
+web: sleep 5; shotgun config.ru --server=puma --port=9292

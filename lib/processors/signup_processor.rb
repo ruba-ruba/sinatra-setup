@@ -4,6 +4,7 @@ class SignupProcessor
   end
 
   attr_reader :email, :password, :password_confirmation
+
   def initialize(params)
     @email = params['email']
     @password = params['password']
@@ -13,11 +14,17 @@ class SignupProcessor
   def process
     user = User.new(email: email, password: password)
     return user unless params_valid?
-    user.valid? && user.save
+    if user.valid? && user.save
+      greet_user(user)
+    end
     user
   end
 
   private
+
+  def greet_user(user)
+    MessageSender.new.call('signup_email_notification_queue', user_id: user.id)
+  end
 
   def params_valid?
     email &&
