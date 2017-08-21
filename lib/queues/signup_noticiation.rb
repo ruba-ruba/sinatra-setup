@@ -1,5 +1,7 @@
 module MessageProcessors
   class SignupNoticiation
+    include ::Logging
+
     def call(payload)
       set_user(payload['user_id'].to_i)
       deliver
@@ -10,9 +12,9 @@ module MessageProcessors
     attr_reader :user
 
     def deliver
-      puts "sending email to #{user.email}"
+      logger.info "sending email to #{user.email}"
       sleep 1
-      puts "finished sending email"
+      logger.info "finished sending email"
     end
 
     def set_user(user_id)

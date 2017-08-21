@@ -33,7 +33,7 @@ module RabbitMQ
 
     def channel
       @channel ||= begin
-        conn = Bunny.new
+        conn = Bunny.new(logger: CommonLogger.new(Logger::INFO))
         conn.start
         conn.create_channel
       end

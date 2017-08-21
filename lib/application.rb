@@ -4,6 +4,7 @@ Bundler.require
 require 'sinatra/base'
 require 'rack-flash'
 require 'pry'
+require_relative 'common_logger'
 
 ENV['RACK_ENV'] ||= 'development'
 
@@ -11,7 +12,21 @@ ENV['RACK_ENV'] ||= 'development'
 class Application < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
 
-  set :logging, true
+  def self.common_logger
+    @_logger ||= CommonLogger.new(log_level)
+  end
+
+  def self.log_level
+    case ENV['RACK_ENV']
+    when 'development' then Logger::DEBUG
+    when 'test' then Logger::INFO
+    end
+  end
+
+  configure do
+    set :logging, nil
+    set :logger, common_logger
+  end
 
   enable :sessions
   set :session_secret, 'supersecret'
