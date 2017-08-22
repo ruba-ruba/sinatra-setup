@@ -13,7 +13,7 @@ class Application < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
 
   def self.common_logger
-    @_logger ||= CommonLogger.new(log_level)
+    @_logger ||= CommonLogger.new(log_level, name: 'APP')
   end
 
   def self.log_level

@@ -33,8 +33,9 @@ module RabbitMQ
       @channel ||= begin
         conn = Bunny.new
         conn.start
-        conn.create_channel
+        ch = conn.create_channel
         at_exit { conn.close }
+        ch
       end
     end
   end

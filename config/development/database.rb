@@ -1,2 +1,2 @@
 DB = Sequel.connect('sqlite://db/development.db')
-DB.loggers << Application.common_logger
+DB.loggers << CommonLogger.new(Application.log_level, name: 'Sequel')
