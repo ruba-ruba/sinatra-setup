@@ -1,3 +1,5 @@
+# WARN: rabbitmq doesn't work with shotgun due to fact that shoutgun reload all classes (eg consumers) between requests
+
 # queue server
 rabbitmq: rabbitmq-server
 

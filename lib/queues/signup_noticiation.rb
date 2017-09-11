@@ -18,7 +18,7 @@ module MessageProcessors
     end
 
     def set_user(user_id)
-      @user = User.find(user_id).first
+      @user = User.with_pk(user_id).first
     end
   end
 end

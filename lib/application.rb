@@ -52,3 +52,8 @@ class Application < Sinatra::Base
 end
 
 require './lib/deps'
+
+# TODO: this should be handled vis spec_helper
+unless ENV['RACK_ENV'] == 'test'
+  RabbitMQ::Initializer.instance.start_consumers
+end

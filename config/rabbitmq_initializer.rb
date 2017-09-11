@@ -3,20 +3,14 @@ require 'yaml'
 
 module RabbitMQ
   class Initializer
-    def self.start
-      initializer = new(YAML.load_file('./config/queues.yml'))
-      # initializer.register_queues
-      initializer.start_consumers
-    end
+    include Singleton
 
-    def initialize(queues)
-      @queues = queues
-    end
+    attr_reader :queues, :connection
 
-    def register_queues
-      queues.each do |queue_name, _|
-        channel.queue(queue_name)
-      end
+    def initialize(path = './config/queues.yml')
+      @queues = YAML.load_file(path)
+      @logger = CommonLogger.new(Logger::INFO, name: 'RabbitMQ')
+      @connection = conn
     end
 
     def start_consumers
@@ -25,17 +19,24 @@ module RabbitMQ
       end
     end
 
+    def conn
+      @conn ||=
+        with_retry do
+          conn = Bunny.new(ENV['RABBITMQ_URI'], logger: @logger)
+          at_exit { conn.close }
+          conn.start
+        end
+    end
+
     private
 
-    attr_reader :queues
-
-    def channel
-      @channel ||= begin
-        conn = Bunny.new
-        conn.start
-        ch = conn.create_channel
-        at_exit { conn.close }
-        ch
+    def with_retry(retry_count = 5, &block)
+      begin
+        yield
+      rescue Bunny::TCPConnectionFailedForAllHosts => e
+        raise e if retry_count.zero?
+        sleep 1
+        with_retry(retry_count -= 1, &block)
       end
     end
   end

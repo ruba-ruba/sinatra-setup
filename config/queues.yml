@@ -1,3 +1,6 @@
 signup_email_notification_queue:
   class_name: MessageProcessors::SignupNoticiation
+  concurrency: 1
+countdown:
+  class_name: MessageProcessors::Countdown
   concurrency: 5

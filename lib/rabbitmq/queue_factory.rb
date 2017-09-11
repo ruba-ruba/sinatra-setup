@@ -16,7 +16,7 @@ module RabbitMQ
     private
 
     def queues
-      @queues ||= YAML.load_file('./config/queues.yml')
+      RabbitMQ::Initializer.instance.queues
     end
   end
 end

@@ -42,6 +42,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     allow(Bunny).to receive(:new) { double(:bunny).as_null_object }
+    allow_any_instance_of(RabbitMQ::Initializer).to receive(:connection) { double(:conn).as_null_object }
   end
 
   config.before(:suite) do

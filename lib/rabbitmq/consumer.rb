@@ -28,16 +28,16 @@ module RabbitMQ
     attr_reader :queue_name, :queue_factory, :options
 
     def queue
-      channel.queue(queue_name)
+      channel = create_channel
+      x = channel.direct(queue_name)
+      q = channel.queue(queue_name, exclusive: false)
+      q.bind(x)
+      q
     end
 
-    def channel
-      @channel ||= begin
-        logger = CommonLogger.new(Logger::INFO, name: 'RabbitMQ')
-        conn = Bunny.new(logger: logger)
-        conn.start
-        conn.create_channel
-      end
+    def create_channel
+      conn = RabbitMQ::Initializer.instance.connection
+      conn.create_channel
     end
   end
 end

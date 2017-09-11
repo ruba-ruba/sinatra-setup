@@ -1,19 +1,17 @@
 module RabbitMQ
   class Producer
     def call(queue_name, payload)
-      x = channel.direct('internal')
+      x = channel.direct(queue_name)
       q = channel.queue(queue_name, exclusive: false)
-      q.bind(x, :routing_key => queue_name)
-
-      x.publish(payload.to_json, routing_key: queue_name)
+      q.bind(x)
+      x.publish(payload.to_json)
     end
 
     private
 
     def channel
       @channel ||= begin
-        conn = Bunny.new
-        conn.start
+        conn = RabbitMQ::Initializer.instance.connection
         conn.create_channel
       end
     end
