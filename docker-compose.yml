@@ -1,0 +1,32 @@
+version: '2.1'
+services:
+  app:
+    build: .
+    command:
+      bash -c "
+        while ! curl -s rabbitmq:15672 > /dev/null;
+          do echo waiting for rabbitMQ;
+          sleep 1;
+          done;
+          puma config.ru -b tcp://0.0.0.0:9292;"
+    volumes:
+      - .:/myapp
+    ports:
+      - "9292:9292"
+    links:
+      - rabbitmq
+    tty: true
+    stdin_open: true
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBITMQ_URI: amqp://user:pass@rabbitmq
+  rabbitmq:
+    command: rabbitmq-server
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_PASS: pass
+      RABBITMQ_DEFAULT_USER: user
