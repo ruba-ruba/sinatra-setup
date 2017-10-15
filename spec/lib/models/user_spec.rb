@@ -14,16 +14,34 @@ RSpec.describe User do
   describe 'validations' do
     let(:user) { build(:user) }
 
-    it 'requires email' do
-      user.email = nil
-      expect(user).not_to be_valid
-      expect(user.errors[:email]).to eq ['is not present']
+    context 'when email is missing' do
+      before do
+        user.email = nil
+        user.valid?
+      end
+
+      it 'not valid' do
+        expect(user).not_to be_valid
+      end
+
+      it 'set error message' do
+        expect(user.errors[:email]).to eq ['is not present']
+      end
     end
 
-    it 'requires email' do
-      user.password = nil
-      expect(user).not_to be_valid
-      expect(user.errors[:password]).to eq ['is not present']
+    context 'when password is missing' do
+      before do
+        user.password = nil
+        user.valid?
+      end
+
+      it 'not valid' do
+        expect(user).not_to be_valid
+      end
+
+      it 'set error message' do
+        expect(user.errors[:password]).to eq ['is not present']
+      end
     end
   end
 end

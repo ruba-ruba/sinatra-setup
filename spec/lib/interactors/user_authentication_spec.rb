@@ -5,18 +5,29 @@ RSpec.describe UserAuthentication do
 
   describe '.authenticate' do
     subject do
-      described_class.call({ 'email' => 'uemail', 'password' => 'upass' })
+      described_class.call('email' => 'uemail', 'password' => 'upass')
     end
 
-    it 'success when params are correct' do
-      expect(subject.success?).to be_truthy
-      expect(subject.user).not_to be_nil
+    context 'when params are correct' do
+      it 'success' do
+        expect(subject.success?).to be_truthy
+      end
+
+      it 'set user' do
+        expect(subject.user).not_to be_nil
+      end
     end
 
-    it 'fails when params invalid' do
-      user.update(password: 'another-pass')
-      expect(subject.failure?).to be_truthy
-      expect(subject.message).to eq('Could not log in')
+    context 'when params invalid' do
+      before { user.update(password: 'another-pass') }
+
+      it 'respond with failure' do
+        expect(subject.failure?).to be_truthy
+      end
+
+      it 'set error message' do
+        expect(subject.message).to eq('Could not log in')
+      end
     end
   end
 end

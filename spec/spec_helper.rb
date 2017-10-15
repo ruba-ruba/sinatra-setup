@@ -22,6 +22,8 @@ require 'rack/test'
 require 'factory_girl'
 require 'database_cleaner'
 
+$VERBOSE = nil
+
 ENV['RACK_ENV'] = 'test'
 
 require File.expand_path('../../lib/application', __FILE__)
