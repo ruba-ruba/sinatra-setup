@@ -2,6 +2,10 @@ require 'spec_helper'
 
 RSpec.describe SignupProcessor do
   describe '.process' do
+    before do
+      allow_any_instance_of(described_class).to receive(:greet_user)
+    end
+
     context 'when params are valid' do
       let(:params) do
         { 'email' => 'email@com', 'password' => 'pass', 'password_confirmation' => 'pass' }

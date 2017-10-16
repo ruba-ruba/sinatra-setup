@@ -42,11 +42,6 @@ RSpec.configure do |config|
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  config.before(:each) do
-    allow(Bunny).to receive(:new) { double(:bunny).as_null_object }
-    allow_any_instance_of(RabbitMQ::Initializer).to receive(:connection) { double(:conn).as_null_object }
-  end
-
   config.before(:suite) do
     FactoryGirl.find_definitions
     DatabaseCleaner.strategy = :truncation
